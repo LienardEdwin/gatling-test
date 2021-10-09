@@ -3,14 +3,15 @@ import Bar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import {makeStyles, Theme} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 import {useRouter} from 'next/router'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   button: {
     textTransform: 'initial',
     color: '#3f51b5',
     backgroundColor: 'white',
+    fontWeight: 'bold',
   },
   title: {
     flexGrow: 1,
@@ -38,7 +39,7 @@ function AppBar(props:any) {
             classes={{root: classes.button}}
             onClick={handleClick}
           >
-            <Typography>Accueil</Typography>
+            Home
           </Button>
           <Typography variant="h6" className={classes.title}>
             {title}

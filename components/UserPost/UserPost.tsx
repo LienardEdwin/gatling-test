@@ -1,12 +1,12 @@
 import React from 'react'
-import {makeStyles, Theme} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: 345,
   },

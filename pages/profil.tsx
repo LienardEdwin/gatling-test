@@ -1,18 +1,49 @@
 import React, {useEffect, useState} from 'react'
-import Box from '../components/Box/Box'
 import axios from 'axios'
 import {useRouter} from 'next/router'
+import AppBar from '../components/AppBar/AppBar'
+import Grid from '@material-ui/core/Grid'
+import UserProfil from '../components/UserProfil/UserProfil'
+import {makeStyles} from '@material-ui/core/styles'
 
-function profil(props:any) {
-  const {data} = props
+const useStyles = makeStyles(() => ({
+  root: {
+    margin: 0,
+    width: '100%',
+  },
+}))
+
+function profilPage() {
+  const router = useRouter()
+  const {id} = router.query
+  const [user, setUser] = useState({
+    name: '',
+  })
+  const classes = useStyles()
+
+
+  useEffect(() => {
+    const url = `https://jsonplaceholder.typicode.com/users?id=${id}`
+    axios.get(url).then(res => {
+      let data = res.data
+      data.map((res:any) => {
+        setUser(res)
+      })
+    }).catch(err => console.error(err))
+  }, [])
 
   return(
     <>
-      <Box>
-        <h1>le profil</h1>
-      </Box>
+      <Grid container spacing={2} className={classes.root}>
+        <Grid item xl={12} lg={12}>
+          <AppBar title={user.name}/>
+        </Grid>
+        <Grid item xl={12} lg={12}>
+          <UserProfil userInfo={user}/>
+        </Grid>
+      </Grid>
     </>
   )
 }
 
-export default profil
+export default profilPage

@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
 import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -17,6 +14,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 const useStyles = makeStyles({
   root: {
     width: 345,
+  },
+  button: {
+    fontWeight: 'bold',
   },
 })
 
@@ -51,7 +51,6 @@ export default function UserCard({data}:any) {
           <Avatar aria-label="recipe">
             {data.name.charAt(0).toUpperCase()}
           </Avatar>
-
         }
         action={
           <>
@@ -72,20 +71,16 @@ export default function UserCard({data}:any) {
               }}
             >
               <MenuItem key={0} onClick={showProfil}>
-                Voir profil
+                Show Profil
               </MenuItem>
             </Menu>
           </>
-
-
         }
         title={data.name}
         subheader={data.email}
       />
       <CardActions>
-        <Button size="small" color="primary" onClick={showPost}>
-                    Voir
-        </Button>
+        <Button variant={'contained'} classes={{root: classes.button}} size="small" color="primary" onClick={showPost}>All post</Button>
       </CardActions>
     </Card>
   )
