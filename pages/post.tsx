@@ -6,7 +6,7 @@ import UserPost from '../components/UserPost/UserPost'
 import AppBar from '../components/AppBar/AppBar'
 import {makeStyles, Theme} from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     margin: 0,
     width: '100%',

@@ -4,8 +4,9 @@ import Grid from '@material-ui/core/Grid'
 import UserCard from './UserCard/UserCard'
 import {makeStyles} from '@material-ui/core/styles'
 import AppBar from './AppBar/AppBar'
-import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Avatar from '@material-ui/core/Avatar'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -68,9 +69,13 @@ const UsersTable: FunctionComponent = () => {
             <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
               <AppBar title={'Users list'}/>
             </Grid>
-            <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-              <Typography>Users in Appt : {nbApt}</Typography>
-              <Typography>Users in Suite : {nbSuit}</Typography>
+            <Grid container spacing={2} item xl={12} lg={12} md={12} sm={12} xs={12} className={classes.root}>
+              <Grid item>
+                <Chip avatar={<Avatar>{nbApt}</Avatar>} label="Appt" color={'primary'}/>
+              </Grid>
+              <Grid item>
+                <Chip avatar={<Avatar>{nbSuit}</Avatar>} label="Suite" color={'primary'}/>
+              </Grid>
             </Grid>
             {
               users.map(res => (
