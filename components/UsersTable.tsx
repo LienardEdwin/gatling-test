@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react'
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid'
-import Card from './Card/Card'
+import UserCard from './UserCard/UserCard'
 
 type User = {
     id: number,
@@ -25,7 +25,7 @@ const UsersTable: FunctionComponent = () => {
       {
         users.map(res => (
           <Grid item xl={3} lg={3} md={3} sm={3} xs={3} key={res.id}>
-            <Card data={res}/>
+            <UserCard data={res}/>
           </Grid>
         ))
       }
