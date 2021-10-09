@@ -1,6 +1,5 @@
 import React from 'react'
 import type {NextPage} from 'next'
-import App from './_app'
 import reportWebVitals from './reportWebVitals'
 import UsersTable from '../components/UsersTable'
 

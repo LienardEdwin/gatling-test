@@ -6,7 +6,6 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Alert from '@material-ui/lab/Alert'
 import Grid from '@material-ui/core/Grid'
 import {makeStyles} from '@material-ui/core/styles'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 const useStyles = makeStyles(() => ({
   textField: {
@@ -45,26 +44,23 @@ export default function UserProfil(props:any) {
 
   return(
     <>
-      <CircularProgress /> :
       <Grid container spacing={2}>
-        <Grid item xl={6} lg={3}>
+        <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
           <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Name'} value={newName} InputLabelProps={{shrink: true}} onChange={handleChange}/>
         </Grid>
-        <Grid container item xl={6} lg={3} alignItems={'center'}>
-          <Button variant={'contained'} color={'primary'} onClick={updateName}>
-                Save
-          </Button>
+        <Grid container item xl={6} lg={6} md={6} sm={6} xs={6} alignItems={'center'}>
+          <Button variant={'contained'} color={'primary'} onClick={updateName}>Save</Button>
         </Grid>
-        <Grid item xl={6} lg={12}>
+        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
           <TextField classes={{root: classes.textField}} variant={'outlined'} label={'UserName'} value={userInfo.username} InputLabelProps={{shrink: true}}/>
         </Grid>
-        <Grid item xl={6} lg={12}>
+        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
           <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Phone'} value={userInfo.phone} InputLabelProps={{shrink: true}}/>
         </Grid>
-        <Grid item xl={6} lg={12}>
+        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
           <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Email'} value={userInfo.email} InputLabelProps={{shrink: true}}/>
         </Grid>
-        <Grid item xl={6} lg={12}>
+        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
           <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Website'} value={userInfo.website} InputLabelProps={{shrink: true}}/>
         </Grid>
       </Grid>

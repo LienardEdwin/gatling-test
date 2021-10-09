@@ -35,10 +35,10 @@ function profilPage() {
   return(
     <>
       <Grid container spacing={2} className={classes.root}>
-        <Grid item xl={12} lg={12}>
+        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
           <AppBar title={user.name}/>
         </Grid>
-        <Grid item xl={12} lg={12}>
+        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
           <UserProfil userInfo={user}/>
         </Grid>
       </Grid>

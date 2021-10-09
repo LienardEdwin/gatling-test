@@ -26,6 +26,7 @@ const UsersTable: FunctionComponent = () => {
   const [users, setUsers] = useState<User[]>([])
   const [nbApt, setNbApt] = useState(0)
   const [nbSuit, setNbSuit] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   const calcul = () => {
     let apt = 0
@@ -44,11 +45,13 @@ const UsersTable: FunctionComponent = () => {
   }
 
   useEffect(() => {
+    setLoading(true)
     const url = 'https://jsonplaceholder.typicode.com/users'
     axios.get(url)
       .then(response => {
         setUsers(response.data)
-      })
+        setLoading(false)
+      }).catch(err => console.error(err))
   }, [])
 
   useEffect(() => {
@@ -56,25 +59,29 @@ const UsersTable: FunctionComponent = () => {
   }, [users])
 
   return (
-    <Grid container spacing={2} className={classes.root}>
-      <Grid item xl={12} lg={12}>
-        <AppBar title={'Users list'}/>
-      </Grid>
-      <Grid item xl={12} lg={12}>
-        <Typography>Users in Appt : {nbApt}</Typography>
-        <Typography>Users in Suite : {nbSuit}</Typography>
-      </Grid>
+    <>
       {
-        users ?
-          users.map(res => (
-            <Grid container justifyContent={'center'} item xl={3} lg={3} md={3} sm={3} xs={3} key={res.id}>
-              <UserCard data={res}/>
+        loading ?
+          <CircularProgress style={{position: 'absolute', right: '50%', top: '50%'}} />
+          :
+          <Grid container spacing={2} className={classes.root}>
+            <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+              <AppBar title={'Users list'}/>
             </Grid>
-          )) :
-          <CircularProgress />
+            <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+              <Typography>Users in Appt : {nbApt}</Typography>
+              <Typography>Users in Suite : {nbSuit}</Typography>
+            </Grid>
+            {
+              users.map(res => (
+                <Grid container justifyContent={'center'} item xl={3} lg={3} md={4} sm={6} xs={12} key={res.id}>
+                  <UserCard data={res}/>
+                </Grid>
+              ))
+            }
+          </Grid>
       }
-    </Grid>
-
+    </>
   )
 }
 
