@@ -16,7 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 345,
   },
 })
 
@@ -80,7 +80,7 @@ export default function UserCard({data}:any) {
 
         }
         title={data.name}
-        subheader="September 14, 2016"
+        subheader={data.email}
       />
       <CardActions>
         <Button size="small" color="primary" onClick={showPost}>

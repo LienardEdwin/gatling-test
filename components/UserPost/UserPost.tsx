@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    maxWidth: 345,
+    width: 345,
   },
 }))
 
@@ -26,8 +26,6 @@ function UserPost(props:any) {
           {post.body}
         </Typography>
       </CardContent>
-
-
     </Card>
   )
 }
