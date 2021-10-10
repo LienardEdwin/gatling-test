@@ -16,9 +16,10 @@ const useStyles = makeStyles(() => ({
 }))
 
 type User = {
-  id: number,
+  id: string,
   name: string,
   username: string,
+  email: string,
   address: {suite: ''}
 }
 

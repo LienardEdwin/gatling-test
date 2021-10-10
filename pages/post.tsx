@@ -4,7 +4,8 @@ import {useRouter} from 'next/router'
 import Grid from '@material-ui/core/Grid'
 import UserPost from '../components/UserPost/UserPost'
 import AppBar from '../components/AppBar/AppBar'
-import {makeStyles, Theme} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,19 +20,24 @@ function postPage() {
   const {id} = router.query
   const [posts, setPosts] = useState([])
   const [userName, setUserName] = useState('')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     const url = `https://jsonplaceholder.typicode.com/posts?userId=${id}`
     axios.get(url).then(res => {
       setPosts(res.data)
+      setLoading(false)
     }).catch(err => console.error(err))
   }, [])
 
   useEffect(() => {
+    setLoading(true)
     const url = `https://jsonplaceholder.typicode.com/users?id=${id}`
     axios.get(url).then(res => {
       let userInfo = res.data
       setUserName(userInfo[0].name)
+      setLoading(false)
     }).catch(err => console.error(err))
   }, [])
 
@@ -42,11 +48,14 @@ function postPage() {
           <AppBar title={userName}/>
         </Grid>
         {
-          posts.map((res, index) => (
-            <Grid container item xl={3} lg={3} md={3} sm={6} xs={12} key={index} justifyContent={'center'}>
-              <UserPost post={res}/>
-            </Grid>
-          ))
+          loading ?
+            <CircularProgress style={{position: 'absolute', right: '50%', top: '50%'}} />
+            :
+            posts.map((res, index) => (
+              <Grid container item xl={3} lg={3} md={3} sm={6} xs={12} key={index} justifyContent={'center'}>
+                <UserPost post={res}/>
+              </Grid>
+            ))
         }
 
       </Grid>

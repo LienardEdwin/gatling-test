@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {MouseEvent} from 'react'
 import Bar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -19,13 +19,16 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
+type Props = {
+  title: string
+}
 
-function AppBar(props:any) {
+function AppBar(props:Props) {
   const classes = useStyles()
   const router = useRouter()
   const {title} = props
 
-  const handleClick = (e:any) => {
+  const handleClick = (e:MouseEvent) => {
     e.preventDefault()
     router.push('/')
   }

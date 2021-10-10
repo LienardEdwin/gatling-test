@@ -13,7 +13,18 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-export default function UserProfil(props:any) {
+type Props = {
+  userInfo: {
+    id: string,
+    name: string,
+    username: string,
+    phone: string,
+    email: string,
+    website: string
+  }
+}
+
+export default function UserProfil(props:Props) {
   const {userInfo} = props
   const [newName, setNewName] = useState('')
   const [open, setOpen] = useState(false)
@@ -38,7 +49,7 @@ export default function UserProfil(props:any) {
     ).catch(err => console.error(err))
   }
 
-  const handleChange = (event:any) => {
+  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setNewName(event.target.value)
   }
 

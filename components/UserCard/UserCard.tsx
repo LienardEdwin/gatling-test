@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {MouseEvent} from 'react'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import Button from '@material-ui/core/Button'
@@ -20,18 +20,27 @@ const useStyles = makeStyles({
   },
 })
 
-export default function UserCard({data}:any) {
-  const [anchorEl, setAnchorEl] = useState(null)
+type Props = {
+  data:{
+    id: string,
+    name: string,
+    email: string
+  }
+}
+
+export default function UserCard(props:Props) {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const classes = useStyles()
   const router = useRouter()
   const open = Boolean(anchorEl)
+  const {data} = props
 
-  const showPost = (e:any) => {
+  const showPost = (e: MouseEvent) => {
     e.preventDefault()
     router.push(`post?id=${data.id}`)
   }
 
-  const handleOpenMenu = (event:any) => {
+  const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -39,7 +48,7 @@ export default function UserCard({data}:any) {
     setAnchorEl(null)
   }
 
-  const showProfil = (e:any) => {
+  const showProfil = (e:MouseEvent) => {
     e.preventDefault()
     router.push(`profil?id=${data.id}`)
   }

@@ -11,7 +11,14 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function UserPost(props:any) {
+type Props={
+  post:{
+    title: string,
+    body: string,
+  }
+}
+
+function UserPost(props:Props) {
   const {post} = props
   const classes = useStyles()
 

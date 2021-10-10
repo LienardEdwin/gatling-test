@@ -5,6 +5,7 @@ import AppBar from '../components/AppBar/AppBar'
 import Grid from '@material-ui/core/Grid'
 import UserProfil from '../components/UserProfil/UserProfil'
 import {makeStyles} from '@material-ui/core/styles'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -13,21 +14,32 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function profilPage() {
+type UserType = {
+  id: string,
+  name: string,
+  username: string,
+  phone: string,
+  email: string,
+  website: string
+}
+
+
+function profilPage(props:UserType) {
   const router = useRouter()
   const {id} = router.query
-  const [user, setUser] = useState({
-    name: '',
-  })
+  const [user, setUser] = useState<UserType>(props)
   const classes = useStyles()
+  const [loading, setLoading] = useState(false)
 
 
   useEffect(() => {
+    setLoading(true)
     const url = `https://jsonplaceholder.typicode.com/users?id=${id}`
     axios.get(url).then(res => {
       let data = res.data
       data.map((res:any) => {
         setUser(res)
+        setLoading(false)
       })
     }).catch(err => console.error(err))
   }, [])
@@ -38,9 +50,14 @@ function profilPage() {
         <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
           <AppBar title={user.name}/>
         </Grid>
-        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-          <UserProfil userInfo={user}/>
-        </Grid>
+        {
+          loading ?
+            <CircularProgress style={{position: 'absolute', right: '50%', top: '50%'}} />
+            :
+            <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+              <UserProfil userInfo={user}/>
+            </Grid>
+        }
       </Grid>
     </>
   )
