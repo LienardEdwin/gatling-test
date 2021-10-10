@@ -37,7 +37,7 @@ function profilPage(props:UserType) {
     const url = `https://jsonplaceholder.typicode.com/users?id=${id}`
     axios.get(url).then(res => {
       let data = res.data
-      data.map((res:any) => {
+      data.map((res:UserType) => {
         setUser(res)
         setLoading(false)
       })
