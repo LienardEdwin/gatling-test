@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 
 type Props = {
   userInfo: {
-    id: string,
+    id: number,
     name: string,
     username: string,
     phone: string,

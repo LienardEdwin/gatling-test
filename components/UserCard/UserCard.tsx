@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 type Props = {
   data:{
-    id: string,
+    id: number,
     name: string,
     email: string
   }
