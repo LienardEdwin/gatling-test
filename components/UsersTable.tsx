@@ -20,7 +20,7 @@ type User = {
   name: string,
   username: string,
   email: string,
-  address: {suite: ''}
+  address: {suite: string}
 }
 
 const UsersTable: FunctionComponent = () => {
@@ -30,7 +30,7 @@ const UsersTable: FunctionComponent = () => {
   const [nbSuit, setNbSuit] = useState(0)
   const [loading, setLoading] = useState(false)
 
-  const calcul = () => {
+  function nbHomePlace() {
     let apt = 0
     let suite = 0
     let arrayAddress = users.map(item => { return item.address.suite })
@@ -57,7 +57,7 @@ const UsersTable: FunctionComponent = () => {
   }, [])
 
   useEffect(() => {
-    calcul()
+    nbHomePlace()
   }, [users])
 
   return (

@@ -57,7 +57,7 @@ export default function UserCard(props:Props) {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe">
+          <Avatar aria-label="avatar">
             {data.name.charAt(0).toUpperCase()}
           </Avatar>
         }
