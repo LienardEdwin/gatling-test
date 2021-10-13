@@ -1,10 +1,9 @@
-import React, {MouseEvent} from 'react'
+import React from 'react'
 import Bar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import {makeStyles} from '@material-ui/core/styles'
-import {useRouter} from 'next/router'
 
 const useStyles = makeStyles(() => ({
   button: {
@@ -25,25 +24,20 @@ type Props = {
 
 function AppBar(props:Props) {
   const classes = useStyles()
-  const router = useRouter()
   const {title} = props
-
-  const handleClick = (e:MouseEvent) => {
-    e.preventDefault()
-    router.push('/')
-  }
 
   return(
     <>
       <Bar position="static">
         <Toolbar variant="dense">
-          <Button
-            variant="contained"
-            classes={{root: classes.button}}
-            onClick={handleClick}
-          >
-            Home
-          </Button>
+          <a href={'/'}>
+            <Button
+              variant="contained"
+              classes={{root: classes.button}}
+            >
+              Home
+            </Button>
+          </a>
           <Typography variant="h6" className={classes.title}>
             {title}
           </Typography>

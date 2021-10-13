@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import Link from 'next/link'
 
 const useStyles = makeStyles({
   root: {
@@ -31,14 +32,8 @@ type Props = {
 export default function UserCard(props:Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const classes = useStyles()
-  const router = useRouter()
   const open = Boolean(anchorEl)
   const {data} = props
-
-  const showPost = (e: MouseEvent) => {
-    e.preventDefault()
-    router.push(`post?id=${data.id}`)
-  }
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -46,11 +41,6 @@ export default function UserCard(props:Props) {
 
   const handleClose = () => {
     setAnchorEl(null)
-  }
-
-  const showProfil = (e:MouseEvent) => {
-    e.preventDefault()
-    router.push(`profil?id=${data.id}`)
   }
 
   return (
@@ -79,9 +69,14 @@ export default function UserCard(props:Props) {
                 },
               }}
             >
-              <MenuItem key={0} onClick={showProfil}>
-                Show Profil
-              </MenuItem>
+              <Link href={`profil?id=${data.id}`}>
+                <a>
+                  <MenuItem key={0}>
+                    Show Profil
+                  </MenuItem>
+                </a>
+              </Link>
+
             </Menu>
           </>
         }
@@ -89,7 +84,11 @@ export default function UserCard(props:Props) {
         subheader={data.email}
       />
       <CardActions>
-        <Button variant={'contained'} classes={{root: classes.button}} size="small" color="primary" onClick={showPost}>All post</Button>
+        <Link href={`post?id=${data.id}`}>
+          <a>
+            <Button variant={'contained'} classes={{root: classes.button}} size="small" color="primary">All post</Button>
+          </a>
+        </Link>
       </CardActions>
     </Card>
   )
