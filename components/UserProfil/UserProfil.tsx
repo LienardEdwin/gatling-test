@@ -48,22 +48,22 @@ export default function UserProfil(props:Props) {
   return(
     <>
       <Grid container spacing={2}>
-        <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+        <Grid item xs={6}>
           <Field label={'Name'} value={newName} onChange={handleChange}/>
         </Grid>
-        <Grid container item xl={6} lg={6} md={6} sm={6} xs={6} alignItems={'center'}>
+        <Grid container item xs={6} alignItems={'center'}>
           <Button variant={'contained'} color={'primary'} onClick={updateName}>Save</Button>
         </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+        <Grid item sm={6} xs={12}>
           <Field label={'UserName'} value={userInfo.username}/>
         </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+        <Grid item sm={6} xs={12}>
           <Field label={'Phone'} value={userInfo.phone}/>
         </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+        <Grid item sm={6} xs={12}>
           <Field label={'Email'} value={userInfo.email}/>
         </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+        <Grid item sm={6} xs={12}>
           <Field label={'Website'} value={userInfo.website}/>
         </Grid>
       </Grid>

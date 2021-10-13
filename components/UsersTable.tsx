@@ -67,10 +67,10 @@ const UsersTable: FunctionComponent = () => {
           <CircularProgress style={{position: 'absolute', right: '50%', top: '50%'}} />
           :
           <Grid container spacing={2} className={classes.root}>
-            <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+            <Grid item xs={12}>
               <AppBar title={'Users list'}/>
             </Grid>
-            <Grid container spacing={2} item xl={12} lg={12} md={12} sm={12} xs={12} className={classes.root}>
+            <Grid container spacing={2} item xs={12} className={classes.root}>
               <Grid item>
                 <Chip avatar={<Avatar>{nbApt}</Avatar>} label="Appt" color={'primary'}/>
               </Grid>
@@ -80,7 +80,7 @@ const UsersTable: FunctionComponent = () => {
             </Grid>
             {
               users.map(res => (
-                <Grid container justifyContent={'center'} item xl={3} lg={3} md={4} sm={6} xs={12} key={res.id}>
+                <Grid container justifyContent={'center'} item lg={3} md={4} sm={6} xs={12} key={res.id}>
                   <UserCard data={res}/>
                 </Grid>
               ))

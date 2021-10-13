@@ -43,7 +43,7 @@ function postPage() {
   return(
     <>
       <Grid container spacing={2} className={classes.root}>
-        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+        <Grid item xs={12}>
           <AppBar title={userName}/>
         </Grid>
         {
@@ -51,7 +51,7 @@ function postPage() {
             <CircularProgress style={{position: 'absolute', right: '50%', top: '50%'}} />
             :
             posts.map((res, index) => (
-              <Grid container item xl={3} lg={3} md={3} sm={6} xs={12} key={index} justifyContent={'center'}>
+              <Grid container item md={3} sm={6} xs={12} key={index} justifyContent={'center'}>
                 <UserPost post={res}/>
               </Grid>
             ))
