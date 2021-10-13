@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 type UserType = {
-  id: string,
+  id: number,
   name: string,
   username: string,
   phone: string,
@@ -42,7 +42,7 @@ function profilPage(props:UserType) {
         setLoading(false)
       })
     }).catch(err => console.error(err))
-  }, [])
+  }, [id])
 
   return(
     <>

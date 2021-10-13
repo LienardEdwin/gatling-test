@@ -38,7 +38,7 @@ function postPage() {
     })).catch(errors => {
       console.error(errors)
     })
-  }, [])
+  }, [id])
 
   return(
     <>
