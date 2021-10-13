@@ -24,21 +24,20 @@ function postPage() {
 
   useEffect(() => {
     setLoading(true)
-    const url = `https://jsonplaceholder.typicode.com/posts?userId=${id}`
-    axios.get(url).then(res => {
-      setPosts(res.data)
-      setLoading(false)
-    }).catch(err => console.error(err))
-  }, [])
 
-  useEffect(() => {
-    setLoading(true)
-    const url = `https://jsonplaceholder.typicode.com/users?id=${id}`
-    axios.get(url).then(res => {
-      let userInfo = res.data
-      setUserName(userInfo[0].name)
+    const requestOne = axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+
+    const requestTwo = axios.get(`https://jsonplaceholder.typicode.com/users?id=${id}`)
+
+    axios.all([requestOne, requestTwo]).then(axios.spread((...responses: any) => {
+      const responseOne = responses[0].data
+      const responseTwo = responses[1].data
+      setPosts(responseOne)
+      setUserName(responseTwo[0].name)
       setLoading(false)
-    }).catch(err => console.error(err))
+    })).catch(errors => {
+      console.error(errors)
+    })
   }, [])
 
   return(
