@@ -1,17 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import {TextField} from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
 import Snackbar from '@material-ui/core/Snackbar'
 import Alert from '@material-ui/lab/Alert'
 import Grid from '@material-ui/core/Grid'
-import {makeStyles} from '@material-ui/core/styles'
-
-const useStyles = makeStyles(() => ({
-  textField: {
-    width: '100%',
-  },
-}))
+import Field from '../Field/Field'
 
 type Props = {
   userInfo: {
@@ -28,7 +21,6 @@ export default function UserProfil(props:Props) {
   const {userInfo} = props
   const [newName, setNewName] = useState('')
   const [open, setOpen] = useState(false)
-  const classes = useStyles()
 
   useEffect(() => {
     setNewName(userInfo.name)
@@ -57,22 +49,22 @@ export default function UserProfil(props:Props) {
     <>
       <Grid container spacing={2}>
         <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
-          <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Name'} value={newName} InputLabelProps={{shrink: true}} onChange={handleChange}/>
+          <Field label={'Name'} value={newName} onChange={handleChange}/>
         </Grid>
         <Grid container item xl={6} lg={6} md={6} sm={6} xs={6} alignItems={'center'}>
           <Button variant={'contained'} color={'primary'} onClick={updateName}>Save</Button>
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
-          <TextField classes={{root: classes.textField}} variant={'outlined'} label={'UserName'} value={userInfo.username} InputLabelProps={{shrink: true}}/>
+          <Field label={'UserName'} value={userInfo.username}/>
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
-          <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Phone'} value={userInfo.phone} InputLabelProps={{shrink: true}}/>
+          <Field label={'Phone'} value={userInfo.phone}/>
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
-          <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Email'} value={userInfo.email} InputLabelProps={{shrink: true}}/>
+          <Field label={'Email'} value={userInfo.email}/>
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
-          <TextField classes={{root: classes.textField}} variant={'outlined'} label={'Website'} value={userInfo.website} InputLabelProps={{shrink: true}}/>
+          <Field label={'Website'} value={userInfo.website}/>
         </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
