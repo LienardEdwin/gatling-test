@@ -34,7 +34,7 @@ const UsersTable: FunctionComponent = () => {
     let apt = 0
     let suite = 0
     let arrayAddress = users.map(item => { return item.address.suite })
-    arrayAddress.map(item => {
+    arrayAddress.forEach(item => {
       if(item.includes('Suite')) {
         suite = suite + 1
       }
